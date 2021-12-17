@@ -12,6 +12,7 @@ let children = 0
 // the adults and children variables defined above.
 
 function enter(numAdults, numChildren)  { 
+  console.log(occupancy())
   if (numAdults < numChildren) {
     return false
   } 
@@ -23,21 +24,23 @@ function enter(numAdults, numChildren)  {
 }
 
 function leave(numAdults, numChildren) {
-  if (numChildren !== 0 && numAdults === 0) {
+  console.log(occupancy())
+  if (adults === 1 && children >= 1) {
     return false
   } 
-  else if (numChildren > children || numAdults > adults) {
+   if ((adults - numAdults) < (children < adults)) {
     return false
   }
   
-  else if (children >= adults) {
+   if ((adults < numAdults) || (children < numChildren)) {
     return false
   }
-
-  else {
-    return true
+    adults -= numAdults
+    children -= numChildren
+    console.log(occupancy())
+    return true;
   }
-}
+
 
 
 function occupancy(numChildren, numAdults) {
